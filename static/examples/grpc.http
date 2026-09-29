@@ -1,0 +1,68 @@
+@POSTMAN_ECHO_FOO = HelloService/SayHello
+@POSTMAN_ECHO_URL = grpc.postman-echo.com:443
+
+### kulala-echo-grpc-echo
+
+# @grpc-plaintext
+
+GRPC echo.kulala.app:50051 echo.Echo/UnaryEcho
+Content-Type: application/json
+
+{
+  "message": "Hello world!"
+}
+
+### kulala-echo-local-grpc
+
+# @grpc-plaintext
+
+GRPC localhost:50051 echo.Echo/UnaryEcho
+Content-Type: application/json
+
+{
+  "message": "Hello world!"
+}
+
+### POSTMAN_GRPC_ECHO
+
+# @grpc-plaintext
+
+GRPC {{grpc.addr}}:{{grpc.port}} HelloService/SayHello
+Content-Type: application/json
+
+{
+  "greeting": "kulala!"
+}
+
+### plain
+
+# @grpc-plaintext
+
+GRPC grpcb.in:9000 grpcbin.GRPCBin/Index
+HEADER1: {{header1}}
+
+### tls
+
+GRPC grpcb.in:9001 grpcbin.GRPCBin/Index
+HEADER1: {{header1}}
+
+### tunnel_authority
+
+# When tunneling a remote TLS service to localhost, override the SSL server
+# name / :authority so the certificate hostname still matches.
+# @grpc-authority grpcb.in
+
+GRPC localhost:9001 grpcbin.GRPCBin/Index
+HEADER1: {{header1}}
+
+### local_tls_insecure
+
+# Local TLS with a self-signed / invalid cert: keep TLS, skip verification.
+# @grpc-insecure
+
+GRPC localhost:50051 echo.Echo/UnaryEcho
+Content-Type: application/json
+
+{
+  "message": "Hello world!"
+}

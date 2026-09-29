@@ -1,0 +1,18 @@
+@MY_VAR = 123
+# @kulala-curl--insecure
+
+### REQUEST_001
+
+< {%
+  request.variables.set("users", [
+    { name: "Alice" },
+    { name: "Bob" },
+  ])
+%}
+
+GET https://echo.kulala.app/get?user={{users[*].name}} HTTP/1.1
+Content-Type: application/json
+
+### FOO
+
+GET https://echo.kulala.app/get?var={{MY_VAR}} HTTP/1.1

@@ -1,0 +1,35 @@
+@DOC_ENV_TEST = production
+
+### JS_SCRIPT_REQ
+
+< ./scripts.pre.http.js
+
+GET https://echo.kulala.app/get?user={{users_from_js[*].name}}
+  &type={{ TYPE_FROM_JS }} HTTP/1.1
+Content-Type: application/json
+X-Header-From-JS: {{ HEADER_VALUE_FROM_JS }}
+
+{
+  "username": "user123",
+  "password": "pass123",
+  "doc_env_test": "{{ DOC_ENV_TEST }}",
+  "OS_USER": "{{ $env.USER }}"
+}
+
+> ./scripts.post.http.js
+
+> {%
+  async function main() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve("Hello from Async JavaScript!");
+      }, 10);
+    });
+  }
+  client.test("Async JavaScript Test", async () => {
+    client.assert(true, "This test should pass");
+  });
+  client.log(await main());
+  client.log("Status", response.status)
+  client.log("Date", response.headers.valueOf("Date") || "")
+%}

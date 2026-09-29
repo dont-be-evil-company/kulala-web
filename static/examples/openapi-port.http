@@ -1,0 +1,8 @@
+### port-openapi
+
+< ./openapi-port.impersonate.http.js
+
+# @kulala-openapi-explorer
+
+GET https://api.port.io/swagger/json HTTP/1.1
+Authorization: Bearer {{ PORT_BEARER_TOKEN }}

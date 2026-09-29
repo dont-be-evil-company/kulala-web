@@ -1,0 +1,33 @@
+@DOC_ENV_TEST = production
+
+### TEST_REQUEST1
+
+GET https://echo.kulala.app/get HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "user123",
+  "password": "pass123"
+}
+
+> {%
+  client.test("Request executed successfully", function() {
+    const expectedStatus = 200;
+    client.assert(response.status === expectedStatus, response.status === expectedStatus ? `Response status is ${expectedStatus}` : `Expected status ${expectedStatus} but received ${response.status}`);
+  });
+
+  client.test("Headers option exists", function() {
+    client.assert(
+      response.hasOwnProperty("headers"),
+      "Response has 'headers' property",
+    );
+  });
+
+  client.test("Response content-type is json", function() {
+    const type = response.contentType.mimeType;
+    client.assert(
+      type === "application/json",
+      type !== "application/json" ? "Expected 'application/json' but received '" + type + "'" : "Response content-type is 'application/json'",
+    );
+  });
+%}

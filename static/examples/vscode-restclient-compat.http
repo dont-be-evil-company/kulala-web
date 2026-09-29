@@ -1,0 +1,31 @@
+# @kulala-vscode-restclient-compat
+
+### REQUEST_ONE
+
+POST https://echo.kulala.app/post HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "token": "foobar"
+}
+
+### REQUEST_TWO
+
+POST https://echo.kulala.app/post HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "token": "{{REQUEST_ONE.response.body.$.json.token}}"
+}
+
+### REQUEST_THREE
+
+POST https://echo.kulala.app/post HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "date_header": "{{REQUEST_TWO.response.headers['Date']}}"
+}
