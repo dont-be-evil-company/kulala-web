@@ -7,7 +7,7 @@
 		"dev": "vp dev",
 		"build": "vp build",
 		"preview": "vp preview",
-		"postbuild": "svelte-sitemap",
+		"postbuild": "svelte-sitemap && node scripts/generate-examples-index.mjs",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check-watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "vp fmt .",

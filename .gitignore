@@ -22,7 +22,3 @@ Thumbs.db
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
-
-# Dynamic fetch on build from remotes
-/static/*schema.json
-/static/http-client.*.json
