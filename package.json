@@ -5,9 +5,8 @@
 	"private": true,
 	"scripts": {
 		"dev": "vp dev",
-		"build": "vp build",
+		"build": "./scripts/build.sh",
 		"preview": "vp preview",
-		"postbuild": "svelte-sitemap && node scripts/generate-examples-index.mjs",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check-watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "vp fmt .",
@@ -49,5 +48,5 @@
 		"vite-plus": "latest",
 		"vitest": "npm:@voidzero-dev/vite-plus-test@latest"
 	},
-	"packageManager": "pnpm@11.5.2"
+	"packageManager": "pnpm@12.8.1"
 }
