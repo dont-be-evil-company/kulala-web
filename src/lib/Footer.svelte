@@ -5,7 +5,7 @@
 			<a href="/">Back to home</a>
 		</p>
 		<p>
-			Built by <a href="https://mistweaverco.com">the mistweaverco 🌈 community</a> - Powered by
+			Built by <a href="https://the-dont-be-evil-company.com">The Don't Be Evil Company</a> and only made possible by the 🌈 community</a> - Powered by
 			<a class="powered-by-svelte" href="https://kit.svelte.dev/">SvelteKit</a>
 			- &copy {new Date().getFullYear()}
 		</p>

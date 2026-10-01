@@ -110,4 +110,4 @@ Most JetBrains HTTP Client syntax ports directly:
 - GraphQL, gRPC, multipart (including IntelliJ inline `Text` parts)
 - OAuth `{{$auth.token("profile")}}`
 
-All examples on this site are sourced from [kulala-core `http-example-files`](https://github.com/mistweaverco/kulala-core/tree/main/http-example-files).
+All examples on this site are available [here](https://github.com/dont-be-evil-company/kulala-web/tree/main/src/static/examples), [here](https://kulala.app/examples) and verified against the current kulala-core parser.

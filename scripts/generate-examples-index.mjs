@@ -30,10 +30,7 @@ function urlFor(relativePath = '') {
 		return baseUrl;
 	}
 
-	const encodedPath = relativePath
-		.split('/')
-		.map(encodeURIComponent)
-		.join('/');
+	const encodedPath = relativePath.split('/').map(encodeURIComponent).join('/');
 
 	return `${baseUrl}/${encodedPath}`;
 }
@@ -69,10 +66,7 @@ async function generateIndex(directory, relativePath = '') {
 	const rows = [];
 
 	if (relativePath) {
-		const parentPath = relativePath
-			.split('/')
-			.slice(0, -1)
-			.join('/');
+		const parentPath = relativePath.split('/').slice(0, -1).join('/');
 
 		rows.push(`
 			<tr>
@@ -85,12 +79,10 @@ async function generateIndex(directory, relativePath = '') {
 	}
 
 	for (const item of items) {
-    if (item.name.endsWith('.br') || item.name.endsWith('.gz')) {
-      continue;
-    }
-		const childPath = relativePath
-			? `${relativePath}/${item.name}`
-			: item.name;
+		if (item.name.endsWith('.br') || item.name.endsWith('.gz')) {
+			continue;
+		}
+		const childPath = relativePath ? `${relativePath}/${item.name}` : item.name;
 
 		rows.push(`
 			<tr>
@@ -106,9 +98,7 @@ async function generateIndex(directory, relativePath = '') {
 		`);
 	}
 
-	const displayPath = relativePath
-		? `${baseUrl}/${relativePath}`
-		: baseUrl;
+	const displayPath = relativePath ? `${baseUrl}/${relativePath}` : baseUrl;
 
 	const html = `<!doctype html>
 <html lang="en">
@@ -200,14 +190,9 @@ async function generateIndex(directory, relativePath = '') {
 			continue;
 		}
 
-		const childRelativePath = relativePath
-			? `${relativePath}/${item.name}`
-			: item.name;
+		const childRelativePath = relativePath ? `${relativePath}/${item.name}` : item.name;
 
-		await generateIndex(
-			join(directory, item.name),
-			childRelativePath
-		);
+		await generateIndex(join(directory, item.name), childRelativePath);
 	}
 }
 

@@ -12,7 +12,9 @@ published: true
 
 Kulala is a powerful API toolset that provides a comprehensive suite of features to help you develop, test, and manage your APIs efficiently.
 
-These guides cover the `.http` file format as implemented by [kulala-core](https://github.com/mistweaverco/kulala-core). Examples are taken from the official `http-example-files` directory and cross-checked against the current parser.
+These guides cover the `.http` file format as implemented by the proprietary kulala-core.
+
+Examples are taken form [here](https://github.com/dont-be-evil-company/kulala-web/tree/main/src/static/examples), [here](https://kulala.app/examples) and verified against the current kulala-core parser.
 
 ## Getting started
 

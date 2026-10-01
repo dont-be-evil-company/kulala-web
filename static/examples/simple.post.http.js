@@ -1,1 +1,1 @@
-client.log("simple.js loaded");
+client.log('simple.js loaded');

@@ -73,4 +73,4 @@ Content-Type: application/json
 - [Scripting](/usage/scripting) - pre/post-request JavaScript and Lua
 - [Migrating from older Kulala docs](/usage/migration) - `@curl-*`, plain `{{USER}}`, VS Code REST Client compat
 
-All examples on this site are taken from [kulala-core `http-example-files`](https://github.com/mistweaverco/kulala-core/tree/main/http-example-files) and verified against the current kulala-core parser.
+All examples on this site are available [here](https://github.com/dont-be-evil-company/kulala-web/tree/main/src/static/examples), [here](https://kulala.app/examples) and verified against the current kulala-core parser.

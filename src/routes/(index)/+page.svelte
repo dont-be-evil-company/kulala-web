@@ -52,32 +52,27 @@
 			<ul>
 				<li>
 					<div class="tooltip" data-tip="Neovim plugin">
-						<a class="link link-primary" href="https://github.com/mistweaverco/kulala.nvim">Kulala.nvim</a>
+						<a class="link link-primary" href="https://github.com/dont-be-evil-company/kulala.nvim">Kulala.nvim</a>
 					</div>
 				</li>
 				<li>
 					<div class="tooltip" data-tip="Code extension">
-						<a class="link link-primary" href="https://github.com/mistweaverco/kulala.vscode">Kulala.vscode</a>
+						<a class="link link-primary" href="https://github.com/dont-be-evil-company/kulala.vscode">Kulala.vscode</a>
 					</div>
 				</li>
 				<li>
 					<div class="tooltip" data-tip="Standalone desktop app">
-					<a class="link link-primary" href="https://github.com/mistweaverco/kulala-desktop">Kulala Desktop</a>
+					<a class="link link-primary" href="https://github.com/dont-be-evil-company/kulala-desktop">Kulala Desktop</a>
 					</div>
 				</li>
 				<li>
 					<div class="tooltip" data-tip="CLI for formatting .http files, importing from/exporting to Postman collections and .bru files, and more!">
-						<a class="link link-primary" href="https://github.com/mistweaverco/kulala-fmt">Kulala FMT</a>
+						<a class="link link-primary" href="https://github.com/dont-be-evil-company/kulala-fmt">Kulala FMT</a>
 					</div>
 				</li>
 				<li>
 					<div class="tooltip" data-tip="Like kulala.nvim, but completely CLI focused and editor-agnostic!">
-						<a class="link link-primary" href="https://github.com/mistweaverco/kulala-cli">Kulala CLI</a>
-					</div>
-				</li>
-				<li>
-					<div class="tooltip" data-tip="The library powering all Kulala apps">
-					<a class="link link-primary" href="https://github.com/mistweaverco/kulala-core">Kulala Core</a>
+						<a class="link link-primary" href="https://github.com/dont-be-evil-company/kulala-cli">Kulala CLI</a>
 					</div>
 				</li>
 			</ul>
@@ -115,9 +110,9 @@
 	<div class="hero-content text-center">
 		<div class="max-w-3xl">
 			<h1 class="text-5xl font-bold">Get involved ❤️</h1>
-			<p class="py-6">All Kulala tools are open-source and we welcome contributions.</p>
+			<p class="py-6">All Kulala clients are open-source and we welcome contributions.</p>
 			<p>
-				View the <a class="text-primary" href="https://github.com/search?q=user%3Amistweaverco+kulala&type=repositories&sort=stargazers">code.</a>
+				View the <a class="text-primary" href="https://github.com/search?q=user%3Adont-be-evil-company+kulala&type=repositories&sort=stargazers">code.</a>
 			</p>
 		</div>
 	</div>
