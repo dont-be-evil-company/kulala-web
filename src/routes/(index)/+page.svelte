@@ -90,6 +90,11 @@
 	<div class="hero-content text-center grid">
 		<div class="bg-base-200 border border-base-300 mt-6 mb-6 border-rounded rounded-lg max-w-3xl p-10">
 			<h1 class="text-5xl font-bold mb-5">Usage 🧑‍💻</h1>
+      <div class="tooltip" data-tip="Real life examples of how to use Kulala apps and the Kulala CLI">
+        <div class="badge badge-outline badge-accent">
+          <a href="/examples">/examples</a>
+        </div>
+      </div>
 			<div class="badge badge-outline badge-info">
 				<a href="/usage">Usage overview</a>
 			</div>
