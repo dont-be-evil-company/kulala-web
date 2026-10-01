@@ -12,7 +12,7 @@
 		"format": "vp fmt .",
 		"lint": "vp fmt --check . && vp lint .",
 		"test-unit": "vp test",
-		"test": "vitest",
+		"test": "vp test",
 		"prepare": "vp config"
 	},
 	"devDependencies": {
@@ -44,9 +44,7 @@
 		"typescript": "6.0.3",
 		"typescript-eslint": "8.61.0",
 		"unified": "11.0.5",
-		"vite": "npm:@voidzero-dev/vite-plus-core@latest",
-		"vite-plus": "latest",
-		"vitest": "npm:@voidzero-dev/vite-plus-test@latest"
-	},
-	"packageManager": "pnpm@12.8.1"
+		"vite": "catalog:",
+		"vite-plus": "catalog:"
+	}
 }

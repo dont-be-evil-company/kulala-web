@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-pnpm install --frozen-lockfile
+vp install
 
 # Measure build time
 start_time=$(date +%s)
