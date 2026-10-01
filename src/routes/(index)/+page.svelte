@@ -18,10 +18,10 @@
 			<img src="/logo.svg" alt="Kulala logo" class="m-5 mx-auto w-64" />
 			<h1 class="text-5xl font-bold">Kulala</h1>
 			<div class="collapse bg-base-100 border border-base-300 mt-6 mb-6 border-rounded rounded-lg">
-				<input type="checkbox" checked={kulalaFeaturesToggle} name="intro-kulala-features" onchange={() => (kulalaFeaturesToggle = !kulalaFeaturesToggle)} />
+				<input type="checkbox" checked={kulalaFeaturesToggle} name="intro-kulala-features" onchange={() => (kulalaFeaturesToggle = !kulalaFeaturesToggle)} style="padding-inline-end: unset; padding: 1rem;" />
 				<div
 					class="collapse-title font-semibold text-lg bg-info text-info-content text-center"
-					style="padding-inline-end: unset;"
+					style="padding-inline-end: unset; padding: 1rem;"
 				>
 					A fully-featured set of tools 🐼 for working with HTTP, GraphQL, gRPC and Websocket connections.
 					<div class="text-center">
