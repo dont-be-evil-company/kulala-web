@@ -10,7 +10,13 @@ import type { Plugin, Settings } from 'unified';
 const config: Config = {
 	kit: {
 		prerender: {
-			handleMissingId: 'ignore'
+			handleMissingId: 'ignore',
+			handleHttpError: ({ path, message }) => {
+				if (path.startsWith('/examples')) {
+					return;
+				}
+				throw new Error(message);
+			}
 		},
 		adapter: adapter({
 			pages: 'build',

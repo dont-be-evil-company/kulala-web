@@ -92,7 +92,7 @@
 			<h1 class="text-5xl font-bold mb-5">Usage 🧑‍💻</h1>
       <div class="tooltip" data-tip="Real life examples of how to use Kulala apps and the Kulala CLI">
         <div class="badge badge-outline badge-accent">
-          <a href="/examples">/examples</a>
+          <a href="/examples" data-sveltekit-preload-data={false}>examples</a>
         </div>
       </div>
 			<div class="badge badge-outline badge-info">
