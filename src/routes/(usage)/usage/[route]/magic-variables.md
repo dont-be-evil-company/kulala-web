@@ -18,7 +18,7 @@ Magic variables are generated fresh on each substitution. They start with `$` an
 | `{{$timestamp}}`    | Unix timestamp (milliseconds) |
 | `{{$isoTimestamp}}` | ISO-8601 timestamp            |
 | `{{$date}}`         | Current date (`yyyy-MM-dd`)   |
-| `{{$randomInt}}`    | Random integer (0–1000)       |
+| `{{$randomInt}}`    | Random integer (0-1000)       |
 
 ## Example
 
