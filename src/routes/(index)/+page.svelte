@@ -57,7 +57,7 @@
 				</li>
 				<li>
 					<div class="tooltip" data-tip="Code extension">
-						<a class="link link-primary" href="https://github.com/dont-be-evil-company/kulala.vscode">Kulala.vscode</a>
+						<a class="link link-primary" href="https://github.com/dont-be-evil-company/kulala-code">Kulala-code</a>
 					</div>
 				</li>
 				<li>
