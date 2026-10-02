@@ -1,8 +1,8 @@
 <script>
 	import '@fortawesome/fontawesome-free/css/all.min.css';
 	import '$lib/global.css';
-	import { copyAction } from '@mistweaverco/mdsvex-shiki/copyAction';
-	import '@mistweaverco/mdsvex-shiki/styles.css';
+	import { copyAction } from '@dont-be-evil-company/mdsvex-shiki/copyAction';
+	import '@dont-be-evil-company/mdsvex-shiki/styles.css';
 	import Footer from '$lib/Footer.svelte';
 </script>
 

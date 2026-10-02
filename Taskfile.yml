@@ -1,0 +1,37 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+---
+version: '3'
+
+tasks:
+  default:
+    desc: Lists all available tasks
+    cmds:
+      - task --list
+    silent: true
+  dev:
+    desc: Runs the app in development mode
+    cmds:
+      - vp dev --open
+    silent: true
+  build:
+    desc: Builds the app
+    cmds:
+      - ./scripts/build.sh {{.CLI_ARGS}}
+    silent: true
+  preview:
+    desc: Builds the app
+    cmds:
+      - vp preview --open
+    silent: true
+  fmt:
+    desc: Formats all files
+    aliases:
+      - format
+    cmds:
+      - vp fmt
+    silent: true
+  lint:
+    desc: Runs lint on all files
+    cmds:
+      - vp lint
+    silent: true

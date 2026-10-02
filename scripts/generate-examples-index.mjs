@@ -8,7 +8,7 @@ const root = 'build/examples';
 const baseUrl = '/examples';
 const scriptDir = dirname(fileURLToPath(import.meta.url));
 const shikiStyles = readFileSync(
-	join(scriptDir, '../node_modules/@mistweaverco/mdsvex-shiki/styles.css'),
+	join(scriptDir, '../node_modules/@dont-be-evil-company/mdsvex-shiki/styles.css'),
 	'utf8'
 );
 
@@ -53,8 +53,41 @@ function urlFor(relativePath = '') {
 	return `${baseUrl}/${encodedPath}`;
 }
 
-function isHttpSource(name) {
-	return name.endsWith('.http') && !name.endsWith('.http.html');
+const LANGUAGES = new Map([
+	['http', 'http'],
+	['json', 'json'],
+	['xml', 'xml'],
+	['graphql', 'graphql'],
+	['js', 'javascript'],
+	['ts', 'typescript'],
+	['sh', 'bash'],
+	['txt', 'plaintext']
+]);
+
+/**
+ * Returns true if the file is a source file that should be rendered in the viewer, and the language to use for highlighting
+ * @param {string} name The actual file name, e.g. `example.http` or `example.http.html`
+ * @returns {[boolean, string|null]} A tuple where the first element is true if the file is a source file, and the second element is the language to use for highlighting (or null if not a source file)
+ */
+function isViewerSource(name) {
+	const language = LANGUAGES.get(name.split('.').pop());
+	if (language && !name.endsWith(`.${language}.html`)) {
+		return [true, language];
+	}
+	return [false, null];
+}
+
+function shouldSkipIndexRendering(name) {
+	if (name === 'index.html') {
+		return true;
+	}
+	if (name.endsWith('.br') || name.endsWith('.gz')) {
+		return true;
+	}
+	if (name.startsWith('.')) {
+		return true;
+	}
+	return false;
 }
 
 function renderViewer({ title, highlighted, backHref, downloadHref, downloadName }) {
@@ -122,28 +155,8 @@ function renderViewer({ title, highlighted, backHref, downloadHref, downloadName
 		}
 
 		.stage {
-			flex: 1 1 auto;
-			min-height: 0;
-			display: flex;
+			display: block;
 			padding: 0 0.6rem 0.6rem;
-		}
-
-		.mdsvex-shiki {
-			flex: 1 1 auto;
-			min-width: 0;
-			min-height: 0;
-			width: 100%;
-			margin: 0;
-			display: flex;
-			flex-direction: column;
-			box-sizing: border-box;
-		}
-
-		.mdsvex-shiki pre {
-			flex: 1 1 auto;
-			min-height: 0;
-			margin: 0;
-			overflow: auto;
 		}
 
 		@media (max-width: 640px) {
@@ -212,10 +225,12 @@ function renderViewer({ title, highlighted, backHref, downloadHref, downloadName
 `;
 }
 
-async function generateHttpViewer(directory, relativePath, name) {
+const HTML_EXTENSION = 'html';
+
+async function generateViewer(directory, relativePath, name, language) {
 	const source = await readFile(join(directory, name), 'utf8');
 	const childPath = relativePath ? `${relativePath}/${name}` : name;
-	const highlighted = unescapeSvelte(highlighter(source, 'http', `path=${childPath}`));
+	const highlighted = unescapeSvelte(highlighter(source, language, `path=${childPath}`));
 
 	const html = renderViewer({
 		title: name,
@@ -225,7 +240,25 @@ async function generateHttpViewer(directory, relativePath, name) {
 		downloadName: name
 	});
 
-	await writeFile(join(directory, `${name}.html`), html);
+	const htmlFileName = `${name}.${HTML_EXTENSION}`;
+	await writeFile(join(directory, htmlFileName), html);
+	return htmlFileName;
+}
+
+/**
+ * Viewer pages are `{source}.html`. Show the source name for those, and keep
+ * every other filename as it is on disk.
+ * @param {string} name
+ */
+function getFileNameForUI(name) {
+	const htmlSuffix = `.${HTML_EXTENSION}`;
+	if (!name.endsWith(htmlSuffix)) {
+		return name;
+	}
+
+	const sourceName = name.slice(0, -htmlSuffix.length);
+	const [isSource] = isViewerSource(sourceName);
+	return isSource ? sourceName : name;
 }
 
 async function generateIndex(directory, relativePath = '') {
@@ -257,8 +290,9 @@ async function generateIndex(directory, relativePath = '') {
 	});
 
 	for (const item of items) {
-		if (!item.directory && isHttpSource(item.name)) {
-			await generateHttpViewer(directory, relativePath, item.name);
+		const [isSource, language] = isViewerSource(item.name);
+		if (!item.directory && isSource) {
+			item.name = await generateViewer(directory, relativePath, item.name, language);
 		}
 	}
 
@@ -278,22 +312,16 @@ async function generateIndex(directory, relativePath = '') {
 	}
 
 	for (const item of items) {
-		if (
-			item.name.endsWith('.br') ||
-			item.name.endsWith('.gz') ||
-			item.name.endsWith('.http.html')
-		) {
-			continue;
-		}
+		if (shouldSkipIndexRendering(item.name)) continue;
 
 		const childPath = relativePath ? `${relativePath}/${item.name}` : item.name;
-		const hrefPath = !item.directory && isHttpSource(item.name) ? `${childPath}.html` : childPath;
+		const hrefPath = childPath;
 
 		rows.push(`
 			<tr>
 				<td>
 					<a href="${urlFor(hrefPath)}">
-						${item.directory ? `${escapeHtml(item.name)}/` : escapeHtml(item.name)}
+						${item.directory ? `${escapeHtml(item.name)}/` : escapeHtml(getFileNameForUI(item.name))}
 					</a>
 				</td>
 				<td>

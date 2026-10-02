@@ -20,6 +20,10 @@ export default defineConfig({
 		},
 		ignorePatterns: [
 			'build/',
+			'static/',
+			'.vite-hooks/',
+			'.jj/',
+			'.git/',
 			'node_modules/',
 			'.svelte-kit/',
 			'dist/',
@@ -194,6 +198,10 @@ export default defineConfig({
 		printWidth: 100,
 		sortPackageJson: false,
 		ignorePatterns: [
+			'.vite-hooks/',
+			'.jj/',
+			'.git/',
+			'static/',
 			'pnpm-lock.yaml',
 			'package-lock.json',
 			'yarn.lock',

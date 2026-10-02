@@ -1,7 +1,10 @@
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { getMdsvexShikiHighlighter, type HighlighterOptions } from '@mistweaverco/mdsvex-shiki';
+import {
+	getMdsvexShikiHighlighter,
+	type HighlighterOptions
+} from '@dont-be-evil-company/mdsvex-shiki';
 import { bundledLanguages, type BundledLanguage } from 'shiki';
 
 const kulalaHttpGrammar = JSON.parse(

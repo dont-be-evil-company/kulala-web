@@ -38,7 +38,7 @@ const config: Config = {
 		mdsvex({
 			highlight: {
 				highlighter: await getKulalaMdsvexShikiHighlighter({
-					displayLanguage: true,
+					displayLang: true,
 					displayPath: true
 				})
 			},
